@@ -26,16 +26,16 @@ Synthesia by Dakooters
 
 (for some reason I'm not allowed to make the links clickable rip)
 Links : 
--- Quick Research
-- Example of a website where you can load your own image https://pbnify.com/
-- Stack Exchange thread https://codegolf.stackexchange.com/questions/42217/paint-by-numbers
--- CIELab Color Space
-- OpenCV Color Space Conversion https://docs.opencv.org/3.4/d8/d01/group__imgproc__color__conversions.html
-- CIELab Color Space https://en.wikipedia.org/wiki/CIELAB_color_space
-- For better perceptual uniformity, see Color Difference (Delta E*) https://en.wikipedia.org/wiki/Color_difference
-- In general, for color spaces, https://poynton.ca/Poynton-color.html
--- Second approach
-- KMeans https:// en.wikipedia.org/wiki/K-means_clustering https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html
+- Quick Research
+  - Example of a website where you can load your own image https://pbnify.com/
+  - Stack Exchange thread https://codegolf.stackexchange.com/questions/42217/paint-by-numbers
+- CIELab Color Space
+  - OpenCV Color Space Conversion https://docs.opencv.org/3.4/d8/d01/group__imgproc__color__conversions.html
+  - CIELab Color Space https://en.wikipedia.org/wiki/CIELAB_color_space
+  - For better perceptual uniformity, see Color Difference (Delta E*) https://en.wikipedia.org/wiki/Color_difference
+  - In general, for color spaces, https://poynton.ca/Poynton-color.html
+- Second approach
+  - KMeans https:// en.wikipedia.org/wiki/K-means_clustering https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html
 (which is essentially just a Voronoi-Lloyd https://en.wikipedia.org/wiki/Lloyd%27s_algorithm)
 
 Data/Code availability : 
