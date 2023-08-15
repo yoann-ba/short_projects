@@ -1,3 +1,5 @@
+# Intro to AI & ML
+
 [YT video link](https://youtu.be/sgfQF8XbiEE)
 
 A simple overview of the Artificial Intelligence field and its subfields of Expert Systems, Machine Learning, Deep Learning, and the recent Foundation Models. Not too sure about the 1 sec detail thing but I figured it could be a good compromise between too much and not enough, you either wait a bit or pause...
