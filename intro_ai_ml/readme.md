@@ -1,16 +1,11 @@
-# Intro to AI/ML/Data Science
+[YT video link](https://youtu.be/sgfQF8XbiEE)
 
-Resources : 
+A simple overview of the Artificial Intelligence field and its subfields of Expert Systems, Machine Learning, Deep Learning, and the recent Foundation Models.
 
-- Goodfellow, Bengio, Courville book https://www.deeplearningbook.org/
-- Le Cun, Bengio, Hinton article https://www.researchgate.net/publication/277411157_Deep_Learning
-- foundation model paper https://arxiv.org/abs/2108.07258
-- Schmidhuber article (just to show different terminology?) http://www.scholarpedia.org/article/Deep_Learning
+Does not go into details of training paradigms (Supervised etc.), DL architectures (CNN, RNN, Transformers...), tech/coding info, or my own experience or opinions.
 
----
+Second try recording a video, dit it again in one take and it's still quite far from the quality I'd like these videos to have but I'd say it's passable.
 
-Topics : 
-
-- AI, ML, (Representation Learning,) DL. Chronology, names of main algos, names of main projects that got known in the public, figure with properties from CRFM
-- NN, Backpropagation, gradient descent
-- Supervised, Unsupervised. Semi-, Self-Supervised, RLHF.
+Sources / More reading (still no hyperlinks): 
+- The Deep Learning book by Goodfellow, Bengio and Courtville, 2016. All available online so I recommend reading just the introduction, it's not too long and fairly accessible. www.deeplearningbook.org
+- The report on Foundation Models by a Stanford group, 2022. Long report so I recommend just the intro, but you can take a look at the table of contents and pick and choose some other parts to read as well (like 3. Applications and 5. Society). https://arxiv.org/abs/2108.07258
