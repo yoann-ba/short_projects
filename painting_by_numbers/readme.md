@@ -9,6 +9,7 @@ In the end, it's not perfect as there remains a lot of little tiny cells and too
 First video of this kind, did just one audio take without over-editing it so I could fully see the result, so it's quite bad. Going from explaining something in french to someone in person is really not quite the same as doing it in english to my fake desk plant...
 
 Chapters : 
+```
 0:00 Start
 0:10 Intro
 0:26 Painting by numbers
@@ -20,6 +21,7 @@ Chapters :
 8:24 One detailed example
 8:48 Bad examples
 9:43 Good examples
+```
 
 Showcase music : 
 Synthesia by Dakooters
