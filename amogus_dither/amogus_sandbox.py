@@ -373,14 +373,14 @@ def run_as_patches(img, method="kmeans", nb_iter=10000, size_scaler=2):
 # > or from the Lab space that is filled by the colors of the area?
 
 
-path = "E:\Python_Data\general_img_db/" + "test_bear.jpg"
-path = "E:\Python_Data/general_img_db/anime_comics_fantasy_game/" + "kingpseak_-_daniel_lieske.jpeg"
+path = "E:\Python_Data\general_img_db/" + "mona_lisa_small.jpg"
+#path = "E:\Python_Data/general_img_db/anime_comics_fantasy_game/" + "kingpseak_-_daniel_lieske.jpeg"
 path = Path(path)
 
 img = cv2.imread(str(path))
 img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 
-img = cv2.resize(img, (512, 600))
+# img = cv2.resize(img, (512, 600))
 
 # img = img[600:750, 950:1100] # alex dog zoom face
 
