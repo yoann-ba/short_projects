@@ -91,6 +91,13 @@ def convert_to_RGB(lab_img):
     
     return rgb_img
 
+# 
+def convert_RGB_to_OKLab(rgb_img):
+    
+    
+    
+    return
+
 
 #%% core functions
 
