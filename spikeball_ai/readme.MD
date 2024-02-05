@@ -6,7 +6,9 @@
 - what to do with frames where ball is invisible?
 - time frame resolution, every single frame is redundant, start with every x(3-4?) frame then re-do those in between that are fucked up?
 - two label images, one for color values, one for accurate position of ball in 3D, then actually test out the physics modifications+other post process?
-
+- work in [pixel row %, pixel col %, L, a, b]? for better patterns?
+- count grey pixels as class negatives or don't count them at all?
+- a few regressors or a classifier? mainly ball regressor then remove preds from other regressors?
 
 
 # parts: 
