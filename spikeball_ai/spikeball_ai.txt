@@ -1,5 +1,0 @@
-- screen resolution? all frames /2 or /4? first frames full resolution then reduce as we know where the ball is?
-- dont search the full screen for the ball once we know where it is for next frames?
-- when to work in colors, when to work in colors + pixels 2D, when to work in colors + estimated 3D coords
-- estimate depth coord with just the growth/shrink of the ball?
-- 
