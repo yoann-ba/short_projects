@@ -72,16 +72,6 @@ rgb_img = colour.read_image(img_path)[:, :, :3]
 lab_img = convert_RGB_to_Lab(rgb_img)
 
 
-img_path = 'E:\Python_Data\spikeball\spikeball_quick/'
-img_name = "label_frame_"+str(0)+".png"
-
-img_path = Path(img_path + img_name)
-
-label_rgb = colour.read_image(img_path)[:, :, :3]
-
-# label_lab = convert_RGB_to_Lab(label_rgb)
-
-
 #%% load data and fit models
 
 labels = ['isBall', 'isGrass', 'isGoalPost', 'isSky', 'isSkin']
@@ -106,13 +96,26 @@ for label in labels:
     prediction = models[label].predict(prediction)
     prediction = prediction.reshape((rgb_img.shape[0], rgb_img.shape[1]))
     
-    show_img(prediction, size_scaler = 0.5, title = f"prediction {label}")
+    show_img(prediction, size_scaler = 0.5, title = f"prediction {label}", cmap = 'gray')
 # 
 
 
+#%%
 
+for i_frame in range(8):
+    img_path = 'E:\Python_Data\spikeball\spikeball_quick/'
+    img_name = "frame_"+str(i_frame)+".png"
 
+    img_path = Path(img_path + img_name)
 
+    rgb_img = colour.read_image(img_path)[:, :, :3]
+
+    prediction = rgb_img.reshape((rgb_img.shape[0]*rgb_img.shape[1], 3)).astype(np.float16)
+    prediction = models['isBall'].predict(prediction)
+    prediction = prediction.reshape((rgb_img.shape[0], rgb_img.shape[1]))
+    
+    show_img(prediction, size_scaler = 0.5, title = f"prediction Ball frame {i_frame}", cmap = 'gray')
+# 
 
 
 
