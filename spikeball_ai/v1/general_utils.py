@@ -7,6 +7,17 @@ import matplotlib.pyplot as plt
 
 import colour
 
+#%% global data/info
+
+# in floats, *255 for uint8
+colors_to_labels = {
+    'isBall': [1, 1, 1], 
+    'isGrass': [0, 0, 0], 
+    'isGoalPost': [1, 0, 0], 
+    'isSky': [0, 0, 1], 
+    'isSkin': [0, 1, 0], 
+    }
+
 #%% util functions
 
 # 
