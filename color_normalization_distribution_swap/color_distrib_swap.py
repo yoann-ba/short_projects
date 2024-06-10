@@ -220,7 +220,7 @@ def main_swap_2img(rgb_img, rgb_ref, step_size = 10):
 
 #%% sandbox
 
-base_path = "E:/Python_Data/general_img_db/anime_comics_fantasy_game/lol_skins/"
+base_path = "E:/Python_Data/general_img_db/anime_comics_fantasy_game/"
 img_list = os.listdir(Path(base_path))
 img_list = [path for path in img_list if os.path.isfile(Path(base_path + path))]
 
@@ -237,10 +237,6 @@ test_img = colour.read_image(test_img)[:, :, :3]
 ref_img = colour.read_image(ref_img)[:, :, :3]
 print(test_img.shape, ref_img.shape)
 
-
-#%%
-
-b = main_run_2img(test_img, ref_img)
 
 
 
