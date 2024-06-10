@@ -1,4 +1,4 @@
-# SpikeBall AI
+# SpikeBall AI (paused)
 
 Ball detection, spike detection
 Then application on video for detection of moments of interest if image-level detectors are satisfactory
