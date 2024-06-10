@@ -1,3 +1,11 @@
+# SpikeBall AI
+
+Ball detection, spike detection
+Then application on video for detection of moments of interest if image-level detectors are satisfactory
+
+Results sheet
+https://docs.google.com/spreadsheets/d/11eNwIu8-KOcoUV1y7D9ItPUWB6DJLhUxwq7t-Ndstj8/edit?usp=sharing 
+
 # questions: 
 - screen resolution? all frames /2 or /4? first frames full resolution then reduce as we know where the ball is?
 - dont search the full screen for the ball once we know where it is for next frames?

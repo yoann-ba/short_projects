@@ -45,11 +45,14 @@ def get_colors_of_coords(img, coords, unique = True, sample_reduction = 1):
         colors = colors.astype(np.float16)
         
         new_coords = coords[idx]
-    # 
+        return_coords = new_coords
+    else:
+        return_coords = coords
     
-    return colors, new_coords
+    return colors, return_coords
 
 # 
+# RGB, rows%, cols%
 def build_5d(colors, pixel_coords, img_shape):
     
     temp1 = pixel_coords[:, 0]/img_shape[0]
@@ -62,7 +65,8 @@ def build_5d(colors, pixel_coords, img_shape):
 
 #%% main 
 
-def build_positive_datasets(img_path, label_path, ref_name):
+def build_positive_datasets(img_path, label_path, ref_name, 
+                            unique = True, sample_reduction = 1):
     
     image_names = os.listdir(Path(img_path))
     
@@ -87,7 +91,8 @@ def build_positive_datasets(img_path, label_path, ref_name):
             if len(coords) == 0:
                 print('no pixel found, skip')
                 continue
-            rgb_colors, coords = get_colors_of_coords(img, coords)
+            rgb_colors, coords = get_colors_of_coords(img, coords, unique=unique, 
+                                                      sample_reduction=sample_reduction)
             # 
             if f"{label}_rgb" not in dataset:
                 dataset[f"{label}_rgb"] = rgb_colors
@@ -106,7 +111,7 @@ def build_positive_datasets(img_path, label_path, ref_name):
     return dataset
 
 
-# takes the ositive dataset (x_true, y=1) for each variable
+# takes the positive dataset (x_true, y=1) for each variable
 # and shuffle them into n (x_true,y=1),(x_false, y=0) datasets
 def build_shaped_binary_datasets(dataset):
     
@@ -115,7 +120,7 @@ def build_shaped_binary_datasets(dataset):
         rgb_colors = dataset[f"{label}_rgb"]
         data_5d = dataset[f"{label}_5d"]
         y_rgb = np.full(rgb_colors.shape[0], 1)
-        y_5d = np.full(data_5d.shape[0], 0)
+        y_5d = np.full(data_5d.shape[0], 1)
         
         for other_label in utils.colors_to_labels:
             if label == other_label:
@@ -151,17 +156,23 @@ def save_shaped(shaped_dataset):
 #%% paths
 
 img_path = "E:\Python_Data\spikeball\spikeball_v1/img_data/internet_grass/"
-label_path = "E:\Python_Data\spikeball\spikeball_v1/img_label/internet_grass/"
+label_path = "E:\Python_Data\spikeball\spikeball_v1/img_label/internet_grass/ball_spike_other/"
 
 ref_name = "chrome_fsGkZjAQZT.jpg"
 
 #%%
 
-dataset = build_positive_datasets(img_path, label_path, ref_name)
+# dataset = build_positive_datasets(img_path, label_path, ref_name)
 
-shaped_datasets = build_shaped_binary_datasets(dataset)
 
-save_shaped(shaped_datasets)
+#%%
+
+# shaped_datasets = build_shaped_binary_datasets(dataset)
+
+
+#%%
+
+# save_shaped(shaped_datasets)
 
 
 

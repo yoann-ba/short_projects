@@ -9,19 +9,30 @@ import colour
 
 #%% global data/info
 
+
 # in floats, *255 for uint8
 colors_to_labels = {
     'isBall': [1, 1, 1], 
-    'isGrass': [0, 0, 0], 
     'isGoalPost': [1, 0, 0], 
-    'isSky': [0, 0, 1], 
-    'isSkin': [0, 1, 0], 
+    'other': [0, 0, 0]
     }
+
+# # in floats, *255 for uint8
+# colors_to_labels = {
+#     'isBall': [1, 1, 1], 
+#     'isGrass': [0, 0, 0], 
+#     'isGoalPost': [1, 0, 0], 
+#     'isSky': [0, 0, 1], 
+#     'isSkin': [0, 1, 0], 
+#     'other': [1, 0, 1]
+#     }
+
 
 #%% util functions
 
 # 
-def show_img(img, size_scaler = 1, title = '', cmap = ''):
+def show_img(img, size_scaler = 1, title = '', cmap = '', 
+             vmin = None, vmax = None):
     
     screen_dpi = 96
     temp_size = (int(img.shape[0]*size_scaler/plt.rcParams['figure.dpi']), 
@@ -33,7 +44,7 @@ def show_img(img, size_scaler = 1, title = '', cmap = ''):
     plt.figure(figsize = temp_size, dpi = plt.rcParams['figure.dpi'])
     
     if cmap:
-        plt.imshow(img, cmap = cmap)
+        plt.imshow(img, vmin = vmin, vmax = vmax, cmap = cmap)
     else:
         plt.imshow(img)
     

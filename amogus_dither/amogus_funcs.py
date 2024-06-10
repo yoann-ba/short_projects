@@ -109,7 +109,7 @@ def apply_amogus_prob_kmeans(img_crop):
     # - visible pattern L_std < high, random.choice(high vals)
     if L_std < 5:
         val_list = [-5, -4, -3, 3, 4, 5] # for high visibility
-        val_list = [-2, -1, 1, 2] # for sneaky
+        # val_list = [-2, -1, 1, 2] # for sneaky
         noise_vals = np.random.choice(val_list, (5, 4, 3))
         color_list = crop_lab.astype(int) + noise_vals
         color_list = np.clip(color_list, 0, 255)
@@ -204,7 +204,7 @@ def main_run(img, method = "kmeans", nb_iter = 5000, size_scaler = 1):
 
     new_img = np.copy(img)
     debug_img = np.copy(img)
-    show_img(new_img, title = "original img", size_scaler = size_scaler)
+    #show_img(new_img, title = "original img", size_scaler = size_scaler)
 
     nb_amogus = 0
     for i in range(nb_iter):
@@ -224,9 +224,9 @@ def main_run(img, method = "kmeans", nb_iter = 5000, size_scaler = 1):
         # if i%10 == 0:
         #     show_img(new_img, size_scaler = 5)
     # 
-    show_img(new_img, title = f"{nb_amogus} amoguses", size_scaler = size_scaler)   
+    #show_img(new_img, title = f"{nb_amogus} amoguses", size_scaler = size_scaler)   
     print("nb amogus made:", nb_amogus)
-    show_img(debug_img, title = f"{nb_amogus} amoguses (debug)", size_scaler = size_scaler)
+    #show_img(debug_img, title = f"{nb_amogus} amoguses (debug)", size_scaler = size_scaler)
     
     return new_img, nb_amogus, debug_img
 
@@ -273,7 +273,9 @@ def run_as_patches(img, method="kmeans", nb_iter=10000, size_scaler=2):
 #%% main
 
 
-path = "E:\Python_Data/general_img_db/anime_comics_fantasy_game/" + "kingpseak_-_daniel_lieske.jpeg"
+path = "E:\Python_Data/general_img_db/anime_comics_fantasy_game/"
+path = "E:\Python_Data/real_birthday/"
+path += "IMG-20240503-WA0003_crop_face_x0_5.jpg"
 
 path = Path(path)
 
@@ -285,7 +287,7 @@ img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 
 time_st = time()
 
-test, nb, dbg = run_as_patches(img, method = "kmeans", nb_iter = 8000, size_scaler = 3)
+test, nb, dbg = run_as_patches(img, method = "kmeans", nb_iter = 50000, size_scaler = 4)
 print(f"time taken: {time() - time_st:.2f}")
 
 
