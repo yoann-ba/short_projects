@@ -92,7 +92,8 @@ def bilinear_interp(lab_img_square, alpha_row, alpha_col):
 
 
 # 
-def point_iteration(lab_img, pt_10coords, diff_threshold, size_scaler):
+def point_iteration(lab_img, pt_10coords, diff_threshold, size_scaler, 
+                    dist_limit = 5):
     
     new_pt_coords = []
     
@@ -139,7 +140,7 @@ def point_iteration(lab_img, pt_10coords, diff_threshold, size_scaler):
         first_coord = storage_pt_coords[i]
         nbr_coord = nbr_coords[i][0]
         
-        if np.linalg.norm(first_coord - nbr_coord) < 15:
+        if np.linalg.norm(first_coord - nbr_coord) <= dist_limit:
             mid = ((nbr_coord + first_coord)*0.5).astype(int)
             replacement_dict[f"{list(first_coord)}"] = list(mid)
             replacement_dict[f"{list(nbr_coord)}"] = list(mid)
@@ -221,9 +222,10 @@ def run_details_iters(rgb_img, lab_img, title = '',
                       nb_pts = 10_000, seed = None, 
                       nb_iters = 30, nb_plot = 15, 
                       diff_threshold = 0.1,
-                      size_scaler = 1):
+                      size_scaler = 1, 
+                      dist_limit = 2):
     # 
-    show_img(rgb_img, title = title, size_scaler = size_scaler)
+    # show_img(rgb_img, title = title, size_scaler = size_scaler)
     pt_10coords = point_generation(lab_img, nb_pts, seed)
     
     storage_pt_coords = np.copy(pt_10coords)
@@ -231,13 +233,15 @@ def run_details_iters(rgb_img, lab_img, title = '',
         print("step", i_iter)
         storage_pt_coords = point_iteration(lab_img, storage_pt_coords, 
                                             diff_threshold = diff_threshold, 
-                                            size_scaler = size_scaler)
-        if i_iter > nb_plot:
+                                            size_scaler = size_scaler, 
+                                            dist_limit=dist_limit)
+        if i_iter >= nb_plot -1:
             tree = KDTree(storage_pt_coords/10) # shift to pixel indices for the rest
             dist_map, ind_map = distance_indices_maps(lab_img, tree)
             avg_rgb_per_pt = build_colours_per_pt(ind_map, lab_img)
             mosaic_img = build_mosaic(rgb_img, ind_map, avg_rgb_per_pt)
-            show_img(mosaic_img, title = title+f'\nstep {i_iter}, {len(storage_pt_coords)} pts, no close pts', size_scaler = size_scaler)
+            show_img(mosaic_img, title = title+f'\nstep {i_iter+1}, {len(storage_pt_coords)} pts, {diff_threshold} diff threshold, {dist_limit} dist limit', 
+                     size_scaler = size_scaler)
     # 
     
     return mosaic_img
@@ -246,8 +250,8 @@ def run_details_iters(rgb_img, lab_img, title = '',
 #%% sandbox
 
 
-img_path = "E:\Python_Data\general_img_db/"
-img_name = "test_bear.jpg"
+img_path = "E:\Python_Data\general_img_db/anime_comics_fantasy_game/"
+img_name = "cat_knight_-_andrei_modestov.jpg"
 
 img_path = Path(img_path + img_name)
 
@@ -255,13 +259,51 @@ rgb_img = colour.read_image(img_path)
 
 xyz_img = colour.sRGB_to_XYZ(rgb_img)
 oklab_img = colour.XYZ_to_Oklab(xyz_img)
-cielab_img = colour.XYZ_to_Lab(xyz_img)
+# cielab_img = colour.XYZ_to_Lab(xyz_img)
+
+
+#%% 
+
+size_scaler = 1
+show_img(rgb_img, size_scaler=size_scaler, title = img_name + '\nORIGINAL')
+mosaic = run_details_iters(rgb_img, oklab_img, 
+                           nb_pts = 100_000, 
+                           nb_plot = 1, nb_iters = 40, 
+                           size_scaler = size_scaler, 
+                           diff_threshold = 0.1, dist_limit = 1.5, 
+                           title = img_name)
 
 
 
 
+#%% testing
+
+# size_scaler = 1
+# show_img(rgb_img, size_scaler = size_scaler)
+
+# for diff_threshold in [0.1, 0.2]:
+#     for nb_pt in [100_000, 200_000, 1_000_000, 10_000_000]:  
+#         mosaic = run_details_iters(rgb_img, oklab_img, 
+#                            nb_plot = 50, nb_iters = 50, 
+#                            nb_pts = nb_pt, diff_threshold=diff_threshold, 
+#                            title = f'{nb_pt} nb_pt, {diff_threshold} diff thresh', 
+#                            size_scaler = size_scaler)
+# # 
+
+# for dist_limit in [1, ]:
+#     mosaic = run_details_iters(rgb_img, oklab_img, 
+#                                nb_pts = 1_000_000, 
+#                                nb_plot = 20, nb_iters = 50, 
+#                                dist_limit = dist_limit)
 
 
+# diff_threshold = 0.1
+# nb_pt = 1_000_000
+# mosaic = run_details_iters(rgb_img, oklab_img, 
+#                            nb_plot = 10, nb_iters = 30, 
+#                            nb_pts = nb_pt, diff_threshold=diff_threshold, 
+#                            title = f'{nb_pt} nb_pt, {diff_threshold} diff thresh', 
+#                            size_scaler = size_scaler)
 
 
 

@@ -176,9 +176,9 @@ def run_pyramid(rgb_img, lab_img,
 
 
 img_path = "E:\Python_Data\general_img_db/"
-img_path = "E:\Python_Data\general_img_db/anime_comics_fantasy_game/"
+img_path = "E:\Python_Data\general_img_db/anime_comics_fantasy_game/lol_skins/"
 
-img_name = "NWallpaper 03.jpg"
+img_name = "Leona_MechaKingdomsSkin.jpg"
 
 img_path = Path(img_path + img_name)
 

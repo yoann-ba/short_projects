@@ -1,6 +1,6 @@
 # Dynamic mosaic (semi-WIP)
 
-Project to break an image into a mosaic, except the polygon sizes vary over the image in an attempt to have large polygons over areas of low color variations, and small ones over area of high color detail.
+Project to break an image into a mosaic (extended to just all polygons), except the polygon sizes vary over the image in an attempt to have large polygons over areas of low color variations, and small ones over area of high color detail.
 
 So far only using a grid of points that is then used as the base for a Voronoi plot, and all the optimising/modifying happens in the point grid placement.
 
